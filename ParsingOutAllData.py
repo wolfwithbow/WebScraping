@@ -1,25 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-@author: Bow Chung
-Extract data from Company Ticker Symbols
-Find the first record in the table and print
+@author: bow
+copy list
 """
 
 import requests
 
 url = "http://finance.yahoo.com/quote/AAPL?p=AAPL"
-wikiURL = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
+#new dictionary called data
+data = {}
 response = requests.get(url)
-
-wikiResponse = requests.get(wikiURL)
-
-data = {"Company":[]}
-
-wikiFirstParse = wikiResponse.text.split("0001555280")[0] #view a portion of the table
-wikiDataTable = wikiFirstParse.split("Component Stocks")[3] #define the top of the dataset, narrow down range
-
-print(wikiDataTable.split("href=")[5].split('">')[1].split("</")[0]) #5->9->13
 Indicators = {"Previous Close":[],
             "Open":[],
             "Bid":[],
